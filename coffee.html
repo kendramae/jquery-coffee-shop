@@ -48,24 +48,28 @@
     var image = $('#coffee');
     var drinksOrdered = [];
 
-    // var espresso = $('#espresso');
-    // var latte = $('#latte');
-    // var hotChocolate = $('#hot-chocolate');
+    var prices = {
+        "coffee": 2.05,
+        "espresso": 3.25,
+        "latte": 4.15,
+        "hot-chocolate": 2.50
+    };
 
-    image.attr("src", "static/coffee_beans.jpg")
+    image.attr("src", "static/coffee_beans.jpg");
     $('.btn').on('click', makeBeverage);
     image.on('click', makeBeverage);
-    //var myRevenueMessage = document.getElementById("revenue")
+    var total = 0;
+
+    $('#revenue').html("$"+0);
 
     function makeBeverage(evt) {
          var drink = evt.currentTarget.id;
-         // console.log(thingTheyClickedOn == espresso);
-         // console.dir(thingTheyClickedOn);
-         // var drink = thingTheyClickedOn.attr('id');
+    
          console.log(drink);
-         // console.log(drink);
          drinksOrdered.push(drink);
          console.log(drinksOrdered);
+         total = revenue()
+         $('#revenue').html("$"+total);
          image.attr("src","static/coffee_machine.jpg");
          setTimeout(function() { 
             image.attr('src', "static/coffee_mug.jpg"); 
@@ -73,6 +77,15 @@
                 image.attr('src', "static/coffee_beans.jpg"); 
             }, 1500); 
         }, 500);
+    };
+    
+    function revenue(){
+        total = 0;
+        for (var i = 0; i < drinksOrdered.length; i++) {
+            var bev = drinksOrdered[i];
+            total += prices[bev];
+        }
+        return total.toFixed(2);
     };
 
 
