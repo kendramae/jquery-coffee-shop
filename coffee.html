@@ -17,7 +17,7 @@
         <h1>Coffee Shop</h1>
         <br>
 
-        <img id="coffee_image" src="FIXME" alt="make this image work" height="300" width="200">
+        <img id="coffee" src="FIXME" alt="make this image work" height="300" width="200">
 
         <h3 id="message">Click The Image To Order Coffee</h3>
 
@@ -45,7 +45,7 @@
 </div>
 
 <script>
-    var image = $('#coffee_image');
+    var image = $('#coffee');
     var drinksOrdered = [];
 
     // var espresso = $('#espresso');
@@ -53,11 +53,12 @@
     // var hotChocolate = $('#hot-chocolate');
 
     image.attr("src", "static/coffee_beans.jpg")
-    $('.btn').on('click', makeCoffee);
+    $('.btn').on('click', makeBeverage);
+    image.on('click', makeBeverage);
     //var myRevenueMessage = document.getElementById("revenue")
 
-    function makeCoffee(evt) {
-         var drink = evt.currentTarget.outerText;
+    function makeBeverage(evt) {
+         var drink = evt.currentTarget.id;
          // console.log(thingTheyClickedOn == espresso);
          // console.dir(thingTheyClickedOn);
          // var drink = thingTheyClickedOn.attr('id');
@@ -72,7 +73,8 @@
                 image.attr('src', "static/coffee_beans.jpg"); 
             }, 1500); 
         }, 500);
-    }
+    };
+
 
 </script>
 
