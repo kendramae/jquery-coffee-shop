@@ -46,11 +46,25 @@
 
 <script>
     var image = $('#coffee_image');
-    image.attr("src", "static/coffee_beans.jpg").on('click', makeCoffee);
+    var drinksOrdered = [];
+
+    // var espresso = $('#espresso');
+    // var latte = $('#latte');
+    // var hotChocolate = $('#hot-chocolate');
+
+    image.attr("src", "static/coffee_beans.jpg")
+    $('.btn').on('click', makeCoffee);
     //var myRevenueMessage = document.getElementById("revenue")
 
     function makeCoffee(evt) {
-         var thingTheyClickedOn = evt.currentTarget;
+         var drink = evt.currentTarget.outerText;
+         // console.log(thingTheyClickedOn == espresso);
+         // console.dir(thingTheyClickedOn);
+         // var drink = thingTheyClickedOn.attr('id');
+         console.log(drink);
+         // console.log(drink);
+         drinksOrdered.push(drink);
+         console.log(drinksOrdered);
          image.attr("src","static/coffee_machine.jpg");
          setTimeout(function() { 
             image.attr('src', "static/coffee_mug.jpg"); 
